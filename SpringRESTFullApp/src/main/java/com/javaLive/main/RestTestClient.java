@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 import com.javaLive.model.User;
 
 public class RestTestClient {
-	public static final String REST_SERVICE_URI = "http://localhost:8080/SpringRESTFullApp/api";
+	public static final String REST_SERVICE_URI = "http://localhost:8080/SpringMVCRESTFullApp/user";
 
 	/* GET */
 	@SuppressWarnings("unchecked")
@@ -17,7 +17,7 @@ public class RestTestClient {
 		System.out.println("Testing listAllUsers API-----------");
 
 		RestTemplate restTemplate = new RestTemplate();
-		List<LinkedHashMap<String, Object>> usersMap = restTemplate.getForObject(REST_SERVICE_URI + "/user/",
+		List<LinkedHashMap<String, Object>> usersMap = restTemplate.getForObject(REST_SERVICE_URI + "/list",
 				List.class);
 
 		if (usersMap != null) {
@@ -35,7 +35,7 @@ public class RestTestClient {
 	private static void getUser() {
 		System.out.println("Testing getUser API----------");
 		RestTemplate restTemplate = new RestTemplate();
-		User user = restTemplate.getForObject(REST_SERVICE_URI + "/user/1", User.class);
+		User user = restTemplate.getForObject(REST_SERVICE_URI + "/getUser/1", User.class);
 		System.out.println(user);
 	}
 
@@ -44,7 +44,7 @@ public class RestTestClient {
 		System.out.println("Testing create User API----------");
 		RestTemplate restTemplate = new RestTemplate();
 		User user = new User(0, "Sarah", 51, 134);
-		URI uri = restTemplate.postForLocation(REST_SERVICE_URI + "/user/", user, User.class);
+		URI uri = restTemplate.postForLocation(REST_SERVICE_URI + "/createUser", user, User.class);
 		System.out.println("Location : " + uri.toASCIIString());
 	}
 
@@ -53,7 +53,7 @@ public class RestTestClient {
 		System.out.println("Testing update User API----------");
 		RestTemplate restTemplate = new RestTemplate();
 		User user = new User(1, "Tomy", 33, 70000);
-		restTemplate.put(REST_SERVICE_URI + "/user/1", user);
+		restTemplate.put(REST_SERVICE_URI + "/updateUser/1", user);
 		System.out.println(user);
 	}
 
@@ -61,14 +61,14 @@ public class RestTestClient {
 	private static void deleteUser() {
 		System.out.println("Testing delete User API----------");
 		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.delete(REST_SERVICE_URI + "/user/3");
+		restTemplate.delete(REST_SERVICE_URI + "/deleteUser/3");
 	}
 
-	/* DELETE */
+	/* DELETE ALL*/
 	private static void deleteAllUsers() {
 		System.out.println("Testing all delete Users API----------");
 		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.delete(REST_SERVICE_URI + "/user/");
+		restTemplate.delete(REST_SERVICE_URI + "/deleteAllUsers");
 	}
 
 	public static void main(String args[]) {
@@ -80,7 +80,7 @@ public class RestTestClient {
 		listAllUsers();
 		deleteUser();
 		listAllUsers();
-		deleteAllUsers();
+		//deleteAllUsers();
 		listAllUsers();
 	}
 }

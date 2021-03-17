@@ -9,8 +9,9 @@
 	<name>SpringRESTFullApp Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<springframework.version>4.3.0.RELEASE</springframework.version>
-		<jackson.library>2.7.5</jackson.library>
+		<springframework.version>4.3.17.RELEASE</springframework.version>
+		<jackson.library>2.9.10.1</jackson.library>
+		<dbunit.version>2.2</dbunit.version>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 	</properties>
 	<dependencies>
@@ -47,6 +48,28 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.25</version>
 		</dependency>
+		<!-- Servlet+JSP+JSTL -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<version>${dbunit.version}</version>
+			<scope>test</scope>
+		</dependency>
 
 		<!-- dependency> <groupId>com.fasterxml.jackson.dataformat</groupId> <artifactId>jackson-dataformat-xml</artifactId> 
 			<version>${jackson.library}</version> </dependency -->
@@ -54,4 +77,6 @@
 	<build>
 		<finalName>SpringRESTFullApp</finalName>
 	</build>
+
 </project>
+
