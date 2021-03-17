@@ -9,7 +9,7 @@
 	<name>SpringRESTFullApp Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<springframework.version>4.3.0.RELEASE</springframework.version>
+		<springframework.version>5.3.5</springframework.version>
 		<jackson.library>2.7.5</jackson.library>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 	</properties>
