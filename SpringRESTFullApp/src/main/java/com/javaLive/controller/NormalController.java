@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -31,7 +32,18 @@ public class NormalController {
 		
 		List<User> users = userService.findAllUsers();
 		model.addAttribute("employees", users);
-		return "allemployees";
+		return "alluserss";
 	}
 
+	
+	@RequestMapping(value="/getuser/{name}")
+	public String getUser(@PathVariable String name,ModelMap model) {
+		User user = userService.findByName(name);
+		if (user == null) {
+			//logger.error("User with id {} not found.", id);
+			System.out.println("User not found");
+		}
+		model.addAttribute("user", user);
+		return "userInfo";
+	}
 }
